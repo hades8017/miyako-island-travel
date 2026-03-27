@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>宮古島 4天3夜 × 親子旅遊</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ocean: #1a6b8a;
+    --ocean-light: #2a8fba;
+    --sand: #f5efe6;
+    --sand-dark: #e8ddd0;
+    --coral: #e07060;
+    --turquoise: #4cc9c0;
+    --deep: #0d3d52;
+    --white: #fefefe;
+    --text: #1e2d35;
+    --soft: #6b8f99;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    background: var(--sand);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(160deg, var(--deep) 0%, var(--ocean) 45%, var(--turquoise) 100%);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 30px;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 50% at 50% 110%, rgba(76,201,192,0.35) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 30% at 20% 20%, rgba(255,255,255,0.08) 0%, transparent 60%);
+  }
+
+  /* Wave */
+  .wave-bottom {
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+  }
+  .wave-bottom svg { display: block; width: 100%; }
+
+  /* Floating circles */
+  .bubble {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+    animation: float 8s ease-in-out infinite;
+  }
+  .bubble:nth-child(1) { width: 180px; height: 180px; top: 10%; left: 5%; animation-delay: 0s; }
+  .bubble:nth-child(2) { width: 100px; height: 100px; top: 60%; right: 8%; animation-delay: 2s; }
+  .bubble:nth-child(3) { width: 60px; height: 60px; top: 30%; right: 20%; animation-delay: 4s; }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+
+  .hero-tag {
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--turquoise);
+    background: rgba(76,201,192,0.12);
+    border: 1px solid rgba(76,201,192,0.3);
+    padding: 6px 18px;
+    border-radius: 30px;
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 2;
+    animation: fadeDown 0.8s ease both;
+  }
+
+  .hero-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: clamp(2.8rem, 8vw, 5.5rem);
+    color: var(--white);
+    font-weight: 700;
+    line-height: 1.1;
+    position: relative;
+    z-index: 2;
+    animation: fadeDown 0.9s 0.1s ease both;
+  }
+
+  .hero-title span {
+    color: var(--turquoise);
+  }
+
+  .hero-sub {
+    margin-top: 18px;
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 0.05em;
+    position: relative;
+    z-index: 2;
+    animation: fadeDown 1s 0.2s ease both;
+  }
+
+  .hero-badges {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 36px;
+    position: relative;
+    z-index: 2;
+    animation: fadeDown 1.1s 0.3s ease both;
+  }
+
+  .badge {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #fff;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 0.82rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    backdrop-filter: blur(8px);
+  }
+
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── RENTAL INFO ── */
+  .section {
+    padding: 70px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--ocean-light);
+    margin-bottom: 10px;
+  }
+
+  .section-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    color: var(--deep);
+    font-weight: 700;
+    margin-bottom: 30px;
+    line-height: 1.3;
+  }
+
+  /* Rental card */
+  .rental-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 32px;
+    box-shadow: 0 4px 30px rgba(26,107,138,0.10);
+    border-top: 4px solid var(--ocean);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  @media (max-width: 580px) {
+    .rental-card { grid-template-columns: 1fr; }
+  }
+
+  .rental-item h4 {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--soft);
+    margin-bottom: 6px;
+  }
+
+  .rental-item p {
+    font-size: 0.95rem;
+    color: var(--text);
+    line-height: 1.7;
+  }
+
+  .rental-item strong {
+    color: var(--ocean);
+  }
+
+  .tip-box {
+    margin-top: 20px;
+    background: linear-gradient(135deg, rgba(76,201,192,0.12), rgba(26,107,138,0.08));
+    border-left: 3px solid var(--turquoise);
+    border-radius: 10px;
+    padding: 16px 20px;
+    font-size: 0.88rem;
+    color: var(--deep);
+    line-height: 1.7;
+    grid-column: 1 / -1;
+  }
+
+  /* ── DAY CARDS ── */
+  .days-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    padding: 0 20px 80px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .day-card {
+    background: var(--white);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 6px 40px rgba(26,107,138,0.10);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .day-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .day-header {
+    padding: 28px 36px 24px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .day-header::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.07;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .day-num {
+    min-width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    background: rgba(255,255,255,0.2);
+    border: 2px solid rgba(255,255,255,0.35);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(6px);
+    position: relative;
+    z-index: 1;
+  }
+
+  .day-num .day-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    color: rgba(255,255,255,0.8);
+    text-transform: uppercase;
+  }
+
+  .day-num .day-n {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.6rem;
+    color: #fff;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .day-info {
+    position: relative;
+    z-index: 1;
+  }
+
+  .day-info h3 {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.4rem;
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .day-info p {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.6;
+  }
+
+  /* color per day */
+  .day-1 .day-header { background: linear-gradient(135deg, #0d3d52, #1a6b8a); }
+  .day-2 .day-header { background: linear-gradient(135deg, #0d5244, #1a8a6b); }
+  .day-3 .day-header { background: linear-gradient(135deg, #52340d, #8a6b1a); }
+  .day-4 .day-header { background: linear-gradient(135deg, #3d0d3d, #7a2a7a); }
+
+  /* Activities */
+  .day-body {
+    padding: 28px 36px 32px;
+  }
+
+  .activity {
+    display: flex;
+    gap: 18px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--sand-dark);
+  }
+
+  .activity:last-child { border-bottom: none; }
+
+  .act-icon {
+    min-width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+  }
+
+  .act-icon.blue { background: rgba(26,107,138,0.10); }
+  .act-icon.green { background: rgba(26,138,107,0.10); }
+  .act-icon.yellow { background: rgba(138,107,26,0.10); }
+  .act-icon.food { background: rgba(224,112,96,0.12); }
+
+  .act-content h4 {
+    font-size: 1rem;
+    color: var(--deep);
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .act-content p {
+    font-size: 0.85rem;
+    color: var(--soft);
+    line-height: 1.7;
+  }
+
+  .act-content .tag {
+    display: inline-block;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    padding: 2px 10px;
+    border-radius: 20px;
+    margin-top: 6px;
+    margin-right: 4px;
+  }
+
+  .tag.kids { background: rgba(76,201,192,0.15); color: var(--ocean); }
+  .tag.food-tag { background: rgba(224,112,96,0.15); color: var(--coral); }
+  .tag.note { background: rgba(107,143,153,0.15); color: var(--soft); }
+
+  /* MEALS section inside day */
+  .meals-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 580px) {
+    .meals-row { grid-template-columns: 1fr; }
+    .day-header { padding: 22px 22px 18px; }
+    .day-body { padding: 18px 22px 24px; }
+  }
+
+  .meal-card {
+    background: var(--sand);
+    border-radius: 12px;
+    padding: 14px 16px;
+  }
+
+  .meal-card .meal-type {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--soft);
+    margin-bottom: 4px;
+  }
+
+  .meal-card h5 {
+    font-size: 0.9rem;
+    color: var(--deep);
+    font-weight: 700;
+    margin-bottom: 3px;
+  }
+
+  .meal-card p {
+    font-size: 0.78rem;
+    color: var(--soft);
+    line-height: 1.6;
+  }
+
+  a.meal-card {
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  a.meal-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(26,107,138,0.18);
+  }
+  a.meal-card .map-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.7rem;
+    color: var(--ocean-light);
+    margin-top: 7px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── TIPS ── */
+  .tips-section {
+    background: linear-gradient(135deg, var(--deep), var(--ocean));
+    padding: 60px 20px;
+    text-align: center;
+  }
+
+  .tips-section .section-title {
+    color: #fff;
+    margin-bottom: 36px;
+  }
+
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .tip-item {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 16px;
+    padding: 22px 18px;
+    text-align: left;
+    backdrop-filter: blur(6px);
+    transition: background 0.3s;
+  }
+
+  .tip-item:hover {
+    background: rgba(255,255,255,0.14);
+  }
+
+  .tip-item .tip-icon { font-size: 1.5rem; margin-bottom: 10px; }
+  .tip-item h5 { color: var(--turquoise); font-size: 0.85rem; margin-bottom: 6px; }
+  .tip-item p { color: rgba(255,255,255,0.72); font-size: 0.8rem; line-height: 1.7; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--deep);
+    padding: 30px 20px;
+    text-align: center;
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.1em;
+  }
+
+  /* divider wave */
+  .wave-divider {
+    background: var(--sand);
+    line-height: 0;
+  }
+  .wave-divider svg { display: block; width: 100%; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+
+  <div class="hero-tag">✈ 沖繩宮古島 親子旅遊</div>
+  <h1 class="hero-title">宮古島<br><span>4天3夜</span></h1>
+  <p class="hero-sub">7大人 × 4位4歲小孩 × 下地島機場 × 2台車自駕</p>
+
+  <div class="hero-badges">
+    <div class="badge">🚗 2台車自駕出發</div>
+    <div class="badge">👨‍👩‍👧 7大人 × 4位4歲小孩</div>
+    <div class="badge">🛬 下地島機場進出</div>
+    <div class="badge">🌊 宮古藍海灘</div>
+  </div>
+
+  <div class="wave-bottom">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#f5efe6"/>
+    </svg>
+  </div>
+</section>
+
+<!-- RENTAL INFO -->
+<div class="section">
+  <p class="section-label">出發前準備</p>
+  <h2 class="section-title">🚗 租車資訊</h2>
+  <div class="rental-card">
+    <div class="rental-item">
+      <h4>人數配置</h4>
+      <p><strong>共 11 人（7大人 + 4小孩）</strong><br>建議租 <strong>2台</strong> 7人座廂型車，分配約 5〜6人/車</p>
+    </div>
+    <div class="rental-item">
+      <h4>推薦車型</h4>
+      <p><strong>Toyota Alphard / Noah</strong><br>大型廂型車，空間充裕，好裝兒童座椅及行李</p>
+    </div>
+    <div class="rental-item">
+      <h4>取還車地點</h4>
+      <p><strong>下地島空港（みやこ下地島空港）</strong><br>租車公司需預約機場接送服務，部分公司在空港有直接櫃台</p>
+    </div>
+    <div class="rental-item">
+      <h4>費用概估</h4>
+      <p>每台約 <strong>¥12,000〜18,000/天</strong><br>兒童座椅 ×4 約 ¥500/天・各<br>4天合計約 <strong>¥120,000〜160,000</strong></p>
+    </div>
+    <div class="tip-box">
+      💡 <strong>重要提醒：</strong>下地島機場租車公司選擇較少（如 OTS、Times），<strong>請務必提前1〜2個月預訂</strong>，並同時預約 4 個兒童安全座椅。回程班機 14:00，建議 <strong>11:30 前完成還車</strong>，留足時間辦理登機。
+    </div>
+  </div>
+</div>
+
+<!-- DAY CARDS -->
+<div class="days-wrapper">
+
+  <!-- DAY 1 -->
+  <div class="day-card day-1">
+    <div class="day-header">
+      <div class="day-num">
+        <span class="day-label">Day</span>
+        <span class="day-n">1</span>
+      </div>
+      <div class="day-info">
+        <h3>抵達 × 與宮古藍初相遇</h3>
+        <p>13:00 下地島機場落地，取車後直奔海灘，傍晚悠閒用餐</p>
+      </div>
+    </div>
+    <div class="day-body">
+
+      <div class="activity">
+        <div class="act-icon blue">✈️</div>
+        <div class="act-content">
+          <h4>13:00 抵達下地島空港 → 取租車</h4>
+          <p>辦理入境、領行李、取兩台租車並安裝兒童座椅，預估完成時間約 14:00〜14:30。飛機上吃午餐或在機場簡單用餐，節省時間。</p>
+          <span class="tag note">🛬 下地島空港</span>
+          <span class="tag note">⏱ 取車約 30〜60 分鐘</span>
+        </div>
+      </div>
+
+      <div class="activity">
+        <div class="act-icon blue">🏨</div>
+        <div class="act-content">
+          <h4>前往飯店 Check-in → 放置行李</h4>
+          <p>下地島機場位於伊良部島，距離宮古本島市區約 20〜30 分鐘車程。放好行李換上泳裝，準備出發！</p>
+          <span class="tag note">⏱ 約 30 分鐘</span>
+        </div>
+      </div>
+
+      <div class="activity">
+        <div class="act-icon blue">🏖️</div>
+        <div class="act-content">
+          <h4>前濱海灘（前浜ビーチ）</h4>
+          <p>宮古島代表性海灘，純白細沙配上夢幻藍綠海水，水淺坡緩，小孩戲水超安全。約 15:30 抵達，享受 2 小時黃金下午海灘時光。</p>
+          <span class="tag kids">👧 兒童友善</span>
+          <span class="tag note">⏱ 約 1.5〜2 小時</span>
+        </div>
+      </div>
+
+      <h4 style="font-size:0.78rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--soft); margin-bottom:14px; margin-top:6px;">今日餐廳推薦</h4>
+      <div class="meals-row">
+        <a class="meal-card" href="https://maps.google.com/?q=Coral+Port+Grab+Go+Shimojishima+Airport+Miyakojima" target="_blank">
+          <p class="meal-type">機場簡餐（午）</p>
+          <h5>Coral Port Grab&amp;Go</h5>
+          <p>下地島空港內唯一輕食店，塔可飯、飯糰、薯條，快速解決午餐節省時間。</p>
+          <span class="map-link">📍 在 Google Maps 開啟</span>
+        </a>
+        <a class="meal-card" href="https://maps.google.com/?q=宮古牛焼肉+玉城+宮古島" target="_blank">
+          <p class="meal-type">晚餐 🔥</p>
+          <h5>宮古牛焼肉 玉城</h5>
+          <p>宮古島燒肉名店！宮古牛品質頂級，11人大團請務必提前訂位，有英文平板點餐。</p>
+          <span class="map-link">📍 在 Google Maps 開啟</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- DAY 2 -->
+  <div class="day-card day-2">
+    <div class="day-header">
+      <div class="day-num">
+        <span class="day-label">Day</span>
+        <span class="day-n">2</span>
+      </div>
+      <div class="day-info">
+        <h3>海底奇蹟 × 絕景大橋</h3>
+        <p>探索宮古島最具代表的兩個必訪景點</p>
+      </div>
+    </div>
+    <div class="day-body">
+
+      <div class="activity">
+        <div class="act-icon green">🐠</div>
+        <div class="act-content">
+          <h4>宮古島海中公園（海中公園）</h4>
+          <p>不需下水就能看海底世界！岸邊設有觀察窗，珊瑚礁與熱帶魚近在眼前，4歲小孩看得入迷。旁邊有自然生態展示，親子必訪。</p>
+          <span class="tag kids">👧 4歲必訪</span>
+          <span class="tag note">⏱ 約 1〜1.5 小時</span>
+        </div>
+      </div>
+
+      <div class="activity">
+        <div class="act-icon green">🌉</div>
+        <div class="act-content">
+          <h4>伊良部大橋 ドライブ</h4>
+          <p>全長 3,540m，連接宮古島與伊良部島，日本最長免費通行橋。開車穿越橋上，兩側皆是湛藍宮古海，拍照超美！橋頭有停車場可下車眺望。</p>
+          <span class="tag kids">👧 車上就能感受</span>
+          <span class="tag note">⏱ 約 30〜40 分鐘</span>
+        </div>
+      </div>
+
+      <h4 style="font-size:0.78rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--soft); margin-bottom:14px; margin-top:6px;">今日餐廳推薦</h4>
+      <div class="meals-row">
+        <a class="meal-card" href="https://maps.google.com/?q=古謝そば+宮古島" target="_blank">
+          <p class="meal-type">午餐</p>
+          <h5>古謝そば（Koja Soba）</h5>
+          <p>宮古麵人氣名店，清爽豚骨湯底，三層肉鬆軟入味，開店即滿座請早到。</p>
+          <span class="map-link">📍 在 Google Maps 開啟</span>
+        </a>
+        <a class="meal-card" href="https://maps.google.com/?q=三線ライブ居酒屋+美琉太陽+宮古島" target="_blank">
+          <p class="meal-type">晚餐 🎵</p>
+          <h5>三線ライブ居酒屋 美琉太陽</h5>
+          <p>有沖繩三線現場演奏！海鮮料理豐富，兒童友善，食物上得快，大人小孩都愛。</p>
+          <span class="map-link">📍 在 Google Maps 開啟</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- DAY 3 -->
+  <div class="day-card day-3">
+    <div class="day-header">
+      <div class="day-num">
+        <span class="day-label">Day</span>
+        <span class="day-n">3</span>
+      </div>
+      <div class="day-info">
+        <h3>購物日 × 市場 × 伴手禮掃貨</h3>
+        <p>悠閒逛市場、採買在地農產與伴手禮，下午輕鬆景點收尾</p>
+      </div>
+    </div>
+    <div class="day-body">
+
+      <div class="activity">
+        <div class="act-icon yellow">🧺</div>
+        <div class="act-content">
+          <h4>あたらす市場（Atarasu Farmers Market）</h4>
+          <p>宮古島人氣農夫市集，有新鮮熱帶水果、在地蔬菜、芒果、紅芋點心、泡盛等，早到才有最多選擇！小孩可以試吃各種南國水果，超有趣。</p>
+          <a href="https://maps.google.com/?q=あたらす市場+宮古島" target="_blank" class="map-link" style="display:inline-flex;align-items:center;gap:4px;font-size:0.7rem;color:var(--ocean-light);margin-top:7px;font-weight:700;">📍 在 Google Maps 開啟</a>
+          <br>
+          <span class="tag kids">👧 試吃體驗</span>
+          <span class="tag note">⏱ 約 1〜1.5 小時｜09:00 開始</span>
+        </div>
+      </div>
+
+      <div class="activity">
+        <div class="act-icon yellow">🛍️</div>
+        <div class="act-content">
+          <h4>西里通り 商店街 × San-A 超市</h4>
+          <p>宮古島最熱鬧的購物街，紅芋塔、宮古織物、泡盛、海鹽伴手禮集中在這裡。逛完商店街再到旁邊 San-A 超市掃宮古限定零食與調味料，分量買足帶回家！</p>
+          <a href="https://maps.google.com/?q=西里通り+宮古島" target="_blank" class="map-link" style="display:inline-flex;align-items:center;gap:4px;font-size:0.7rem;color:var(--ocean-light);margin-top:7px;font-weight:700;">📍 西里通り</a>
+          &nbsp;
+          <a href="https://maps.google.com/?q=サンエー宮古島食品館" target="_blank" class="map-link" style="display:inline-flex;align-items:center;gap:4px;font-size:0.7rem;color:var(--ocean-light);margin-top:7px;font-weight:700;">📍 San-A 超市</a>
+          <br>
+          <span class="tag note">⏱ 約 1.5〜2 小時</span>
+        </div>
+      </div>
+
+      <div class="activity">
+        <div class="act-icon yellow">🏬</div>
+        <div class="act-content">
+          <h4>イオンタウン宮古南（永旺購物商場）</h4>
+          <p>宮古島最大購物商場，24 小時營業！停車場超大兩台車輕鬆停。衣服、藥妝、日用品、玩具、食品一次買齊，吹冷氣逛街小孩也不鬧，是購物日最完美收尾。</p>
+          <a href="https://maps.google.com/?q=イオンタウン宮古南+宮古島" target="_blank" class="map-link" style="display:inline-flex;align-items:center;gap:4px;font-size:0.7rem;color:var(--ocean-light);margin-top:7px;font-weight:700;">📍 在 Google Maps 開啟</a>
+          <br>
+          <span class="tag note">⏱ 約 1.5〜2 小時</span>
+          <span class="tag kids">🏬 冷氣吹、小孩不鬧</span>
+        </div>
+      </div>
+
+      <div class="activity">
+        <div class="act-icon yellow">🌺</div>
+        <div class="act-content">
+          <h4>東平安名崎燈台 散步（下午）</h4>
+          <p>購物後順道前往宮古島最東端，步道平緩小孩輕鬆走，360度海景超值得。下午陽光角度拍照很美！</p>
+          <span class="tag note">⏱ 約 1 小時</span>
+        </div>
+      </div>
+
+      <h4 style="font-size:0.78rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--soft); margin-bottom:14px; margin-top:6px;">今日餐廳推薦</h4>
+      <div class="meals-row">
+        <a class="meal-card" href="https://maps.google.com/?q=Island+Station+Miyako+島の駅みやこ" target="_blank">
+          <p class="meal-type">午餐</p>
+          <h5>Island Station Miyako（島の駅みやこ）</h5>
+          <p>農產市集附設食堂，宮古麵、在地料理多種選擇，小孩可自由挑選，適合大團。</p>
+          <span class="map-link">📍 在 Google Maps 開啟</span>
+        </a>
+        <a class="meal-card" href="https://maps.google.com/?q=宮古島ピッツァバル+宮古島" target="_blank">
+          <p class="meal-type">晚餐</p>
+          <h5>宮古島ピッツァバル（窯烤披薩）</h5>
+          <p>Google 評分 ⭐5.0！使用宮古鹽與珊瑚水，無添加食材，小孩超愛，隱藏版名店。</p>
+          <span class="map-link">📍 在 Google Maps 開啟</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- DAY 4 -->
+  <div class="day-card day-4">
+    <div class="day-header">
+      <div class="day-num">
+        <span class="day-label">Day</span>
+        <span class="day-n">4</span>
+      </div>
+      <div class="day-info">
+        <h3>最後一天 × 民宿耍廢放空</h3>
+        <p>不排行程，就是放鬆！游泳池、院子、曬太陽，11:30 前還車出發</p>
+      </div>
+    </div>
+    <div class="day-body">
+
+      <div class="activity">
+        <div class="act-icon blue">🛋️</div>
+        <div class="act-content">
+          <h4>民宿耍廢放空</h4>
+          <p>最後一天不排任何景點，就在民宿院子曬太陽、游泳、吃早餐，讓大人小孩都充分放鬆。4個小孩一起玩，大人喝咖啡聊天，這才是旅行最奢侈的時光。</p>
+          <span class="tag kids">👧 小孩自由奔跑</span>
+          <span class="tag note">☀️ 上午盡情放空</span>
+        </div>
+      </div>
+
+      <div class="activity">
+        <div class="act-icon blue">🚗</div>
+        <div class="act-content">
+          <h4>11:30 前完成還車 → 前往下地島空港</h4>
+          <p>回程班機 14:00，建議 <strong>11:30 前在機場還車</strong>，預留 2.5 小時辦理登機手續。11 人大團行李多，check-in 建議提早排隊。機場內有伴手禮區可做最後掃貨。</p>
+          <span class="tag note">🛫 14:00 起飛</span>
+          <span class="tag note">⚠️ 請勿太晚還車</span>
+        </div>
+      </div>
+
+      <h4 style="font-size:0.78rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--soft); margin-bottom:14px; margin-top:6px;">今日餐廳推薦</h4>
+      <div class="meals-row">
+        <a class="meal-card" href="https://maps.google.com/?q=Today's+Shima+Bistro+TAJIYA+宮古島" target="_blank">
+          <p class="meal-type">早午餐</p>
+          <h5>Today's… Shima Bistro TAJIYA</h5>
+          <p>Google 評分 ⭐5.0！咖哩吐司、酪梨三明治超美味，海灘氛圍，早餐 8:00 開始。</p>
+          <span class="map-link">📍 在 Google Maps 開啟</span>
+        </a>
+        <a class="meal-card" href="https://maps.google.com/?q=coral+port+lounge+the+kitchen+下地島空港" target="_blank">
+          <p class="meal-type">機場候機</p>
+          <h5>Coral Port LOUNGE the Kitchen</h5>
+          <p>下地島空港出發層唯一餐廳，宮古麵、咖哩飯，過安檢後在此悠閒等機。</p>
+          <span class="map-link">📍 在 Google Maps 開啟</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- TIPS -->
+<section class="tips-section">
+  <p class="section-label" style="color: rgba(255,255,255,0.5); letter-spacing:0.3em; font-size:0.7rem; text-transform:uppercase; margin-bottom:10px;">旅遊小百科</p>
+  <h2 class="section-title">11人大團 × 親子旅行貼士</h2>
+  <div class="tips-grid">
+    <div class="tip-item">
+      <div class="tip-icon">📋</div>
+      <h5>提早預訂一切</h5>
+      <p>租車、餐廳、飯店均需提早 1〜2 個月預訂。11人大團訂位困難，餐廳建議選擇可包場或有大桌的店家。</p>
+    </div>
+    <div class="tip-item">
+      <div class="tip-icon">🚗</div>
+      <h5>兩台車需對講</h5>
+      <p>建議下載 Line 群組提前通知行程，或使用手機對話保持兩台車聯繫，避免走散。指定一人當領隊車。</p>
+    </div>
+    <div class="tip-item">
+      <div class="tip-icon">🧴</div>
+      <h5>防曬不可少</h5>
+      <p>宮古島紫外線強烈，為小孩準備 SPF 50+ 防曬，海邊玩水要穿防曬衣，備帽子遮陽。</p>
+    </div>
+    <div class="tip-item">
+      <div class="tip-icon">🌊</div>
+      <h5>選擇平緩海灘</h5>
+      <p>前濱、砂山等海灘水淺安全，4 個小孩建議各配一位大人陪同。帶防滑涼鞋避免珊瑚割傷。</p>
+    </div>
+    <div class="tip-item">
+      <div class="tip-icon">💤</div>
+      <h5>保留午休時間</h5>
+      <p>每天最多 2 個大行程，午後可回飯店午休。大人輪流陪睡，其他人才能喘口氣。</p>
+    </div>
+    <div class="tip-item">
+      <div class="tip-icon">🍦</div>
+      <h5>零食 + 甜點備好</h5>
+      <p>車上備足小孩零食，宮古島鹽冰淇淋、紅芋冰是絕佳哄小孩神器，大人也愛吃！</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>🌊 宮古島 4天3夜親子旅遊規劃 · 祝旅途愉快</p>
+  <p style="margin-top:8px; font-size:0.7rem;">餐廳及設施資訊建議出發前再次確認，部分店家可能有公休或異動</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const cards = document.querySelectorAll('.day-card');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  cards.forEach(c => observer.observe(c));
+</script>
+</body>
+</html>
